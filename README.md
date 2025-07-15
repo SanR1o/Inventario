@@ -83,6 +83,7 @@ npm run dev
 # Limpiar cache
 php artisan cache:clear
 php artisan config:clear
+php artisan migrate:reset
 php artisan view:clear
 
 # Revertir migraciones
