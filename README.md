@@ -7,15 +7,22 @@ Sistema de inventario desarrollado con Laravel y PHP
 - Composer
 - Node.js y npm
 - Base de datos (MySQL/MariaDB o SQLite)
+- Git (para clonar el repositorio)
 
 ## Instalación
 
-### Configurar dependencias de PHP
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/SanR1o/Inventario.git
+cd Inventario
+```
+
+### 2. Configurar dependencias de PHP
 ```bash
 composer install
 ```
 
-### Configurar archivo de entorno
+### 3. Configurar archivo de entorno
 ```bash
 # Copiar archivo de configuración
 copy .env.example .env
@@ -29,12 +36,12 @@ copy .env.example .env
 # DB_PASSWORD=
 ```
 
-### Generar clave de aplicación
+### 4. Generar clave de aplicación
 ```bash
 php artisan key:generate
 ```
 
-### Configurar base de datos
+### 5. Configurar base de datos
 ```bash
 # Crear base de datos (si usas MySQL)
 # Crear base de datos llamada 'inventario'
@@ -42,16 +49,16 @@ php artisan key:generate
 # Ejecutar migraciones
 php artisan migrate
 
-# Poblar base de datos con datos iniciales
+# Poblar base de datos con datos iniciales (incluye usuarios de prueba)
 php artisan db:seed
 ```
 
-### Configurar dependencias de Node.js
+### 6. Configurar dependencias de Node.js
 ```bash
 npm install
 ```
 
-### Compilar assets (opcional)
+### 7. Compilar assets
 ```bash
 npm run build
 ```
@@ -70,12 +77,24 @@ El proyecto estará disponible en: http://localhost:8000
 npm run dev
 ```
 
+## Credenciales de Prueba
+
+El sistema incluye usuarios de prueba:
+
+- **Administrador**: `admin@example.com` / `admin123`
+- **Coordinador**: `coordinador@example.com` / `coordinador123`
+
 ## Estructura del Proyecto
 
-- **Usuarios**: Sistema de autenticación con roles
+- **Usuarios**: Sistema de autenticación con roles (Admin/Coordinador)
 - **Categorías**: Organización de productos
 - **Subcategorías**: Subdivisión de categorías
 - **Productos**: Gestión del inventario
+
+## Roles y Permisos
+
+- **Admin**: Acceso completo a todas las funcionalidades
+- **Coordinador**: Puede ver y editar categorías, subcategorías y productos (no puede eliminar ni gestionar usuarios)
 
 ## Comandos Útiles
 
@@ -83,7 +102,7 @@ npm run dev
 # Limpiar cache
 php artisan cache:clear
 php artisan config:clear
-php artisan migrate:reset
+php artisan route:clear
 php artisan view:clear
 
 # Revertir migraciones
@@ -105,4 +124,24 @@ php artisan route:list
 
 ### SQLite (Desarrollo)
 1. El archivo se crea automáticamente
-2. No requiere configuración adicional 
+2. No requiere configuración adicional
+
+## Documentación Adicional
+
+Para información más detallada, consulta los archivos en la carpeta `/md`:
+
+- [Guía de Instalación Detallada](md/INSTALLATION.md)
+- [Configuración de Roles](md/ROLES.md)
+- [Solución de Problemas](md/TROUBLESHOOTING.md)
+
+## Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles. 

@@ -20,15 +20,15 @@ Route::middleware('auth')->group(function() {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    // Rutas solo para admin
+    // Rutas solo para admin (acceso completo a todo)
     Route::middleware('admin')->group(function () {
         Route::resource('usuarios', UserController::class);
-            Route::resource('categorias', CategoriaController::class);
-            Route::resource('subcategorias', SubcategoriaController::class);
-            Route::resource('productos', ProductoController::class);
+        Route::resource('categorias', CategoriaController::class);
+        Route::resource('subcategorias', SubcategoriaController::class);
+        Route::resource('productos', ProductoController::class);
     });
 
-    // Rutas para coordinador (puede ver y editar pero no eliminar)
+    // Rutas para coordinador (puede ver y editar pero no eliminar, NO puede usuarios)
     Route::middleware('coordinador')->group(function () {
         Route::resource('productos', ProductoController::class)->except(['destroy']);
         Route::resource('categorias', CategoriaController::class)->except(['destroy']);
