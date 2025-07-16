@@ -23,6 +23,10 @@
                         Sistema de Inventario
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="{{route('usuarios.index') }}" 
+                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
+                            Gestionar Usuarios
+                        </a>
                         <a href="{{route('categorias.index') }}" 
                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
                             Gestionar Categorías

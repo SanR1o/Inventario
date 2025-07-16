@@ -20,22 +20,20 @@ Route::middleware('auth')->group(function() {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    // Rutas básicas para todos los usuarios autenticados
-    Route::resource('categorias', CategoriaController::class);
-    Route::resource('subcategorias', SubcategoriaController::class);
-    Route::resource('productos', ProductoController::class);
-    
     // Rutas solo para admin
     Route::middleware('admin')->group(function () {
         Route::resource('usuarios', UserController::class);
+            Route::resource('categorias', CategoriaController::class);
+            Route::resource('subcategorias', SubcategoriaController::class);
+            Route::resource('productos', ProductoController::class);
     });
 
-    /*
-    Route::middleware(['auth', 'coordinador'])->group(function () {
+    // Rutas para coordinador (puede ver y editar pero no eliminar)
+    Route::middleware('coordinador')->group(function () {
         Route::resource('productos', ProductoController::class)->except(['destroy']);
         Route::resource('categorias', CategoriaController::class)->except(['destroy']);
-        Route::resource('subcategorias', SubategoriaController::class)->except(['destroy']);
-    });*/
+        Route::resource('subcategorias', SubcategoriaController::class)->except(['destroy']);
+    });
 });
 
 require __DIR__.'/auth.php';
