@@ -8,10 +8,10 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-Route::get('/dasboard', function(){
+Route::get('/dashboard', function(){
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

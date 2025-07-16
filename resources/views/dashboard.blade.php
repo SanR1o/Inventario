@@ -14,4 +14,9 @@
             </div>
         </div>
     </div>
+
+    <a href="{{route('categorias.index') }}">Categorías</a>
+    <a href="{{route('subcategorias.index') }}">Subcategorías</a>
+    <a href="{{route('productos.index') }}">Productos</a>
+
 </x-app-layout>
