@@ -12,10 +12,6 @@ Sistema de inventario desarrollado con Laravel y PHP
 ## Instalación
 
 ### 1. Clonar el repositorio
-```bash
-git clone https://github.com/SanR1o/Inventario.git
-cd Inventario
-```
 
 ### 2. Configurar dependencias de PHP
 ```bash
