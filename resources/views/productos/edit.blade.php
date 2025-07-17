@@ -1,0 +1,121 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            Editar Producto
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <form action="{{ route('productos.update', $producto->id) }}" method="POST" class="space-y-6">
+                        @csrf
+                        @method('PUT')
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Nombre del producto:
+                            </label>
+                            <input type="text" 
+                                   name="nombre" 
+                                   id="nombre"
+                                   value="{{ old('nombre', $producto->nombre) }}"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                   required>
+                            @error('nombre')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Descripción:
+                            </label>
+                            <textarea name="descripcion" id="descripcion" 
+                                      class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                      rows="3">{{ old('descripcion', $producto->descripcion) }}</textarea>
+                            @error('descripcion')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="precio" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Precio:
+                            </label>
+                            <input type="number" 
+                                   name="precio" 
+                                   id="precio"
+                                   value="{{ old('precio', $producto->precio) }}"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                   step="0.01" 
+                                   required>
+                            @error('precio')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="stock" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Stock:
+                            </label>
+                            <input type="number" 
+                                   name="stock" 
+                                   id="stock"
+                                   value="{{ old('stock', $producto->stock) }}"
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                   step="0.01" 
+                                   required>
+                            @error('stock')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div> 
+                        <div>
+                            <label for="categoria_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Categoría:
+                            </label>
+                            <select name="categoria_id" id="categoria_id"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                    required>
+                                <option value="">Seleccione una categoría</option>
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}" {{ old('categoria_id', $producto->categoria_id) == $categoria->id ? 'selected' : '' }}>
+                                        {{ $categoria->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('categoria_id')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="subcategoria_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Subcategoría:
+                            </label>
+                            <select name="subcategoria_id" id="subcategoria_id"
+                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100" 
+                                    required>
+                                <option value="">Seleccione una subcategoría</option>
+                                @foreach ($subcategorias as $subcategoria)
+                                    <option value="{{ $subcategoria->id }}" {{ old('subcategoria_id', $producto->subcategoria_id) == $subcategoria->id ? 'selected' : '' }}>
+                                        {{ $subcategoria->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('subcategoria_id')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="flex space-x-4">
+                            <button type="submit" 
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Actualizar
+                            </button>
+                            <a href="{{ route('productos.index') }}" 
+                               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                Volver
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
