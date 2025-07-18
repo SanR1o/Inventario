@@ -1,48 +1,32 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
- <!--
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
--->
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6">
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
-                        Sistema de Inventario
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <a href="{{route('usuarios.index') }}" 
-                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
-                            Gestionar Usuarios
-                        </a>
-                        <a href="{{route('categorias.index') }}" 
-                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
-                            Gestionar Categorías
-                        </a>
-                        <a href="{{route('subcategorias.index') }}" 
-                           class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
-                            Gestionar Subcategorías
-                        </a>
-                        <a href="{{route('productos.index') }}" 
-                           class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-200 ease-in-out transform hover:scale-105">
-                            Gestionar Productos
-                        </a>
-                    </div>
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-8 mb-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Bienvenido</h3>
+                <p class="text-gray-600 dark:text-gray-100">Gestiona tu inventario de manera fácil y rápida.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Usuarios</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4 text-center">Administra los usuarios del sistema.</p>
+                    <a href="{{route('usuarios.index')}}" class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition">Ir a Usuarios</a>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Categorías</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4 text-center">Gestiona las categorías de productos.</p>
+                    <a href="{{route('categorias.index')}}" class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition">Ir a Categorías</a>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Subcategorías</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4 text-center">Organiza las subcategorías de productos.</p>
+                    <a href="{{route('subcategorias.index')}}" class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition">Ir a Subcategorías</a>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Productos</h4>
+                    <p class="text-gray-500 dark:text-gray-400 mb-4 text-center">Controla los productos del inventario.</p>
+                    <a href="{{route('productos.index')}}" class="px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition">Ir a Productos</a>
                 </div>
             </div>
         </div>
     </div>
-
 </x-app-layout>
