@@ -1,34 +1,20 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Detalles de la Subcategoría
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">ID:</label>
-                            <p class="mt-1 text-lg">{{ $subcategoria->id }}</p>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre:</label>
-                            <p class="mt-1 text-lg">{{ $subcategoria->nombre }}</p>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Categoría:</label>
-                            <p class="mt-1 text-lg">{{ $subcategoria->categoria->nombre }}</p>
-                        </div>
-                        <div class="pt-4">
-                            <a href="{{ route('subcategorias.index') }}" 
-                               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                                Volver
-                            </a>
-                        </div>
-                    </div>
+    <div class="py-10 min-h-screen">
+        <div class="max-w-lg mx-auto px-4">
+            <div class="bg-white dark:bg-gray-900 border-2 border-blue-200 dark:border-blue-700 rounded-2xl shadow-xl p-8">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="inline-block text-3xl text-blue-500">📂</span>
+                    <h1 class="text-2xl font-extrabold text-gray-800 dark:text-white">Subcategoría</h1>
+                </div>
+                <ul class="divide-y divide-blue-100 dark:divide-blue-800">
+                    <li class="py-3 flex justify-between"><span class="font-semibold text-gray-500 dark:text-gray-400">ID</span><span class="text-gray-800 dark:text-gray-100">{{ $subcategoria->id }}</span></li>
+                    <li class="py-3 flex justify-between"><span class="font-semibold text-gray-500 dark:text-gray-400">Nombre</span><span class="text-gray-800 dark:text-gray-100">{{ $subcategoria->nombre }}</span></li>
+                    <li class="py-3 flex justify-between"><span class="font-semibold text-gray-500 dark:text-gray-400">Categoría</span><span class="text-gray-800 dark:text-gray-100">{{ $subcategoria->categoria->nombre }}</span></li>
+                    <li class="py-3 flex justify-between"><span class="font-semibold text-gray-500 dark:text-gray-400">Fecha de Creación</span><span class="text-gray-800 dark:text-gray-100">{{ $subcategoria->created_at->format('d/m/Y H:i:s') }}</span></li>
+                    <li class="py-3 flex justify-between"><span class="font-semibold text-gray-500 dark:text-gray-400">Última Actualización</span><span class="text-gray-800 dark:text-gray-100">{{ $subcategoria->updated_at->format('d/m/Y H:i:s') }}</span></li>
+                </ul>
+                <div class="pt-8 flex flex-wrap gap-3 justify-center">
+                    <a href="{{ route('subcategorias.index') }}" class="px-5 py-2 rounded-lg bg-blue-500 hover:bg-blue-700 text-white font-semibold shadow transition flex items-center gap-2"><span>←</span> Volver</a>
                 </div>
             </div>
         </div>

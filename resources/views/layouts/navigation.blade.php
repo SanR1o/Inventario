@@ -6,21 +6,41 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-2 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <span class="flex items-center gap-2">
+                            <!-- Icono Dashboard -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6m-6 0H7m6 0v6m0 0h6m-6 0H7" /></svg>
+                            {{ __('Dashboard') }}
+                        </span>
                     </x-nav-link>
                     <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.*')">
-                        {{ __('Usuarios') }}
+                        <span class="flex items-center gap-2">
+                            <!-- Icono Usuarios -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2a4 4 0 10-8 0 4 4 0 008 0zm6 2a4 4 0 00-3-3.87" /></svg>
+                            {{ __('Usuarios') }}
+                        </span>
                     </x-nav-link>
                     <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.*')">
-                        {{ __('Categorías') }}
+                        <span class="flex items-center gap-2">
+                            <!-- Icono Categorías -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+                            {{ __('Categorías') }}
+                        </span>
                     </x-nav-link>
                     <x-nav-link :href="route('subcategorias.index')" :active="request()->routeIs('subcategorias.*')">
-                        {{ __('Subcategorías') }}
+                        <span class="flex items-center gap-2">
+                            <!-- Icono Subcategorías -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" /></svg>
+                            {{ __('Subcategorías') }}
+                        </span>
                     </x-nav-link>
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.*')">
-                        {{ __('Productos') }}
+                        <span class="flex items-center gap-2">
+                            <!-- Icono Productos -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none" /></svg>
+                            {{ __('Productos') }}
+                        </span>
                     </x-nav-link>
                 </div>
             </div>
