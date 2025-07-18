@@ -46,7 +46,7 @@ php artisan key:generate
 php artisan migrate
 
 # Poblar base de datos con datos iniciales (incluye usuarios de prueba)
-php artisan db:seed
+php artisan db:seed --class=AdminUserSeeder
 ```
 
 ### 6. Configurar dependencias de Node.js

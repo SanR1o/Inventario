@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function() {
 
     // Rutas para coordinador (puede ver y editar pero no eliminar, NO puede usuarios)
     Route::middleware('coordinador')->group(function () {
+        Route::resource('usuarios', UserController::class)->except(['destroy']);
         Route::resource('productos', ProductoController::class)->except(['destroy']);
         Route::resource('categorias', CategoriaController::class)->except(['destroy']);
         Route::resource('subcategorias', SubcategoriaController::class)->except(['destroy']);
