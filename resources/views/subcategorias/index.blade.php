@@ -1,60 +1,45 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Gestión de Subcategorías
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="mb-4">
-                        <a href="{{ route('subcategorias.create') }}" 
-                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Nueva subcategoría
-                        </a>
+    <div class="py-10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
+                    <h1 class="text-2xl font-extrabold text-gray-800 dark:text-white">Subcategorías</h1>
+                    <a href="{{ route('subcategorias.create') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition">+ Nueva subcategoría</a>
+                </div>
+                @if (session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                        {{ session('success') }}
                     </div>
-                    
-                    @if (session('success'))
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto">
-                            <thead>
-                                <tr class="bg-gray-50 dark:bg-gray-700">
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nombre</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Categoría</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acciones</th>
+                @endif
+                <div class="overflow-x-auto rounded-lg">
+                    <table class="min-w-full table-auto text-sm">
+                        <thead class="bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
+                            <tr>
+                                <th class="px-4 py-3 text-left font-bold text-gray-600 dark:text-gray-300 uppercase">ID</th>
+                                <th class="px-4 py-3 text-left font-bold text-gray-600 dark:text-gray-300 uppercase">Nombre</th>
+                                <th class="px-4 py-3 text-left font-bold text-gray-600 dark:text-gray-300 uppercase">Categoría</th>
+                                <th class="px-4 py-3 text-left font-bold text-gray-600 dark:text-gray-300 uppercase">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($subcategorias as $subcategoria)
+                                <tr class="even:bg-gray-50 even:dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 transition">
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100">{{ $subcategoria->id }}</td>
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100">{{ $subcategoria->nombre }}</td>
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100">{{ $subcategoria->categoria->nombre }}</td>
+                                    <td class="px-4 py-3 text-gray-900 dark:text-gray-100 flex flex-wrap gap-2">
+                                        <a href="{{ route('subcategorias.show', $subcategoria->id) }}" class="px-3 py-1 rounded bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 font-semibold hover:bg-green-200 dark:hover:bg-green-800 transition">Ver</a>
+                                        <a href="{{ route('subcategorias.edit', $subcategoria->id) }}" class="px-3 py-1 rounded bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 font-semibold hover:bg-yellow-200 dark:hover:bg-yellow-800 transition">Editar</a>
+                                        <form action="{{ route('subcategorias.destroy', $subcategoria->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="px-3 py-1 rounded bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 font-semibold hover:bg-red-200 dark:hover:bg-red-800 transition" onclick="return confirm('¿Eliminar subcategoría?')">Eliminar</button>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                                @foreach ($subcategorias as $subcategoria)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $subcategoria->id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $subcategoria->nombre }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $subcategoria->categoria->nombre }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                                            <a href="{{ route('subcategorias.show', $subcategoria->id) }}" 
-                                               class="text-green-600 dark:text-green-400 hover:underline">Ver</a>  
-                                            <a href="{{ route('subcategorias.edit', $subcategoria->id) }}" 
-                                               class="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400">Editar</a>
-                                            <form action="{{ route('subcategorias.destroy', $subcategoria->id) }}" method="POST" class="inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="text-red-600 hover:text-red-900 dark:text-red-400" 
-                                                        onclick="return confirm('¿Eliminar subcategoría?')">Eliminar</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

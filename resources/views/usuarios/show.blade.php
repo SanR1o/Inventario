@@ -30,10 +30,10 @@
                                     @endif">
                                     @switch($user->role)
                                         @case('admin')
-                                            👑 Administrador
+                                            Administrador
                                             @break
                                         @case('coordinador')
-                                            📋 Coordinador
+                                            Coordinador
                                             @break
                                         @default
                                             {{ ucfirst($user->role) }}
@@ -49,7 +49,7 @@
                         <!-- Información personal -->
                         <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
                             <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                                📋 Información Personal
+                                Información Personal
                             </h4>
                             <div class="space-y-3">
                                 <div>
@@ -89,7 +89,7 @@
                         <!-- Información de cuenta -->
                         <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
                             <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                                ⏰ Información de Cuenta
+                                Información de Cuenta
                             </h4>
                             <div class="space-y-3">
                                 <div>
@@ -171,13 +171,13 @@
                             <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                                <button class="bg-red-500 hover:bg-red-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
                                         onclick="return confirm('¿Estás seguro de eliminar este usuario? Esta acción no se puede deshacer.')">
                                     🗑️ Eliminar Usuario
                                 </button>
                             </form>
                         @else
-                            <span class="bg-gray-400 text-white font-bold py-2 px-4 rounded cursor-not-allowed">
+                            <span class="bg-gray-400 text-black font-bold py-2 px-4 rounded cursor-not-allowed">
                                 🚫 No puedes eliminar tu propia cuenta
                             </span>
                         @endif
